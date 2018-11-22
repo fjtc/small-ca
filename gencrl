@@ -1,3 +1,4 @@
+#!/bin/bash
 # BSD 3-Clause License
 # 
 # Copyright (c) 2018, Fabio Jun Takada Chino
@@ -28,37 +29,14 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Deterine the home directory of the script
-MY_HOME=$(dirname "$0")
-pushd "$MY_HOME" > /dev/null
-MY_HOME=$(pwd)
-popd > /dev/null
+# Include the 
+. $(dirname "$0")/common.inc
 
-# Execution timestamp
-TIMESTAMP=$(date +%Y%m%d)
-
-# Files and directories
-CA_PRIVATE_DIR=$MY_HOME/private
-CA_CERT_DIR=$MY_HOME/certs
-CA_REVOKED_DIR=$MY_HOME/certs/revoked
-CA_CONF_DIR=$MY_HOME/conf
-CA_CRL_DIR=$MY_HOME/crl
-CA_DB_DIR=$MY_HOME/db
-CA_CERT_DB_DIR=$CA_DB_DIR/certs
-
-
-# Keys and configuration
-CA_PRIVATE_KEY=$CA_PRIVATE_DIR/cakey.pem
-CA_CERTIFICATE=$CA_CERT_DIR/cacert.pem
-CA_CONFIG_FILE=$CA_CONF_DIR/ca.cnf
-CA_SERIAL_FILE=$CA_DB_DIR/serial.txt
-CA_INDEX_FILE=$CA_DB_DIR/index.txt
-CA_CRL_NUMBER_FILE=$CA_DB_DIR/crlnumber.txt
-CA_CRL_FILE=$CA_CRL_DIR/ca.crl
-
-# Constants
-CA_KEY_ENC=-aes256
-CA_KEY_SIZE=2048
-CA_CERT_DAYS=7300
+if openssl ca -config $CA_CONFIG_FILE -gencrl -out $CA_CRL_FILE; then
+	echo "Certificate revokation list created."
+else
+	echo "Unable to create the certificate revokation list."
+	exit 1
+fi
 
 

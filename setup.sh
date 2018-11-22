@@ -53,6 +53,7 @@ check_dirs() {
 	echo "Checking the directories..."
 	check_and_create_dir $CA_PRIVATE_DIR
 	check_and_create_dir $CA_CERT_DIR
+	check_and_create_dir $CA_REVOKED_DIR
 	check_and_create_dir $CA_CONF_DIR
 	check_and_create_dir $CA_CRL_DIR
 	check_and_create_dir $CA_DB_DIR
@@ -109,6 +110,10 @@ create_database() {
 	if ! [ -f $CA_SERIAL_FILE ]; then
 		echo "Creating the new serial file."
 		date +%N0 > $CA_SERIAL_FILE
+	fi
+	if ! [ -f $CA_CRL_NUMBER_FILE ]; then
+		echo "Creating the new serial file."
+		date +%N0 > $CA_CRL_NUMBER_FILE
 	fi
 }
 
