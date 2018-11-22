@@ -1,0 +1,5 @@
+private
+certs
+db
+crl
+*.bk
