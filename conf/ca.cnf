@@ -2,7 +2,8 @@
 default_ca = CA_default
 
 [ CA_default ]
-# Directories
+# The CA files and directories. Do not change it manually or the scripts will
+# no longer work.
 dir               = /home/fchino/src/small-ca
 certs             = $dir/certs
 crl_dir           = $dir/crl
@@ -11,7 +12,6 @@ database          = $dir/db/index.txt
 serial            = $dir/db/serial.txt
 RANDFILE          = $dir/private/.rand
 
-# CA database
 private_key       = $dir/private/cakey.pem
 certificate       = $dir/certs/cacert.pem
 
@@ -51,7 +51,6 @@ organizationName                = Organization Name
 organizationalUnitName          = Organizational Unit Name
 commonName                      = Common Name
 emailAddress                    = Email Address
-
 # Default values
 countryName_default             = BR
 stateOrProvinceName_default     = Sao Paulo
@@ -59,7 +58,6 @@ localityName_default            = Sao Paulo
 organizationName_default        = ACME Corporation
 organizationalUnitName_default  = Research and Development
 emailAddress_default            =
-
 
 [ v3_ca ]
 subjectKeyIdentifier = hash

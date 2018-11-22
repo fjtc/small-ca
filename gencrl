@@ -33,7 +33,7 @@
 . $(dirname "$0")/common.inc
 
 if openssl ca -config $CA_CONFIG_FILE -gencrl -out $CA_CRL_FILE; then
-	echo "Certificate revokation list created."
+	echo "Certificate revocation list created at $CA_CRL_FILE."
 else
 	echo "Unable to create the certificate revokation list."
 	exit 1
