@@ -29,9 +29,8 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Include the 
-. $(dirname "$0")/common.inc
-
+# Include the common files
+. "$(dirname $0)/common.inc"
 
 # Creates the directory if it does not exist
 check_and_create_dir() {
@@ -58,6 +57,17 @@ check_dirs() {
 	check_and_create_dir $CA_CRL_DIR
 	check_and_create_dir $CA_DB_DIR
 	check_and_create_dir $CA_CERT_DB_DIR
+}
+
+check_and_create_config() {
+
+	if [ -f "$CA_CONFIG_FILE" ]; then
+		echo "The configuration file '$CA_CONF_DIR/ca.cnf' already exists."
+	else
+		ESCAPED_CONFIG_FILE=$(echo "$CA_CONF_DIR" | sed -e 's/[\/&]/\\&/g')
+		cat "$CA_CONFIG_FILE.tpl" | sed -e "s/KTILbq5XWRl7RwAtwpHq/$ESCAPED_CONFIG_FILE/g" > "$CA_CONFIG_FILE"
+		echo "Configuration file '$CA_CONFIG_FILE' has been generated."
+	fi
 }
 
 check_private_key() {
@@ -119,6 +129,7 @@ create_database() {
 
 # Main
 check_dirs
+check_and_create_config
 check_private_key
 patch_config
 check_certificate

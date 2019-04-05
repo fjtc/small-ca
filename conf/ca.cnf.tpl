@@ -4,7 +4,7 @@ default_ca = CA_default
 [ CA_default ]
 # The CA files and directories. Do not change it manually or the scripts will
 # no longer work.
-dir               = /home/fchino/src/small-ca
+dir               = KTILbq5XWRl7RwAtwpHq
 certs             = $dir/certs
 crl_dir           = $dir/crl
 new_certs_dir     = $dir/db/certs
