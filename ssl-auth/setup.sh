@@ -57,6 +57,7 @@ check_dirs() {
 	check_and_create_dir $CA_CRL_DIR
 	check_and_create_dir $CA_DB_DIR
 	check_and_create_dir $CA_CERT_DB_DIR
+	check_and_create_dir $CA_USER_DIR
 }
 
 check_and_create_config() {

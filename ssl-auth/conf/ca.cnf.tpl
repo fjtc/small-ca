@@ -74,6 +74,7 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer
 keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
 extendedKeyUsage = clientAuth, emailProtection
+basicConstraints = CA:false, pathlen:1
 
 [ server_cert ]
 basicConstraints = CA:FALSE
@@ -83,6 +84,7 @@ subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer:always
 keyUsage = critical, digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth
+basicConstraints = CA:false, pathlen:1
 
 [ crl_ext ]
 authorityKeyIdentifier=keyid:always

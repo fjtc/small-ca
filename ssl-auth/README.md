@@ -3,11 +3,12 @@ Copyright (c) 2018-2019 Fabio Jun Takada Chino
 
 ## Introduction 
 
-**Small-CA Basic** is a set of bash scripts that uses [OpenSSL](https://www.openssl.org/) to create a small 
-Certificate Authority for small intranets. It is partially based on [1] written by **J. Nguyen**.
+**Small-CA ssl-auth** is a set of bash scripts that uses [OpenSSL](https://www.openssl.org/) to create a small 
+Certificate Authority for small intranets for client authentiation. It is partially based on [1] written by
+**J. Nguyen**.
 
-This version creates a simple CA with a root certificate that can sign certificate requests directly
-without no intermediate certificates.
+This version creates a simple CA with a root certificate that can create and sign certificate for client
+authentication. It always outputs
 
 ## Dependencies
 

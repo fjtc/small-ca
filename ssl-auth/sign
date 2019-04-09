@@ -52,7 +52,7 @@ if ! [ -f $CSR_FILE ] ; then
 fi
 
 # Sign the certificates
-if openssl ca -config $CA_CONFIG_FILE -extensions server_cert -days 3650 -notext -md sha256 -in $CSR_FILE -out $CER_FILE ; then
+if openssl ca -config $CA_CONFIG_FILE -extensions usr_cert -days 3650 -notext -md sha256 -in $CSR_FILE -out $CER_FILE ; then
 	echo ""
 	exit 0
 else
